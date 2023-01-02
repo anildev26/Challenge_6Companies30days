@@ -6,20 +6,25 @@ public class mRotateFunction {
             return 0;
         }
 
-        int sum =0, iteration = 0, len = nums.length;
+        int n = nums.length;
+        int sum = 0, prevProduct = 0;
 
-        for(int i=0; i<len; i++){
-            sum += nums[i];
-            iteration += (nums[i] * i);
+        for(int i = 0; i < n; i++) //Calculating f[0] here
+        {
+            sum += nums[i]; //f[0] Sum
+            prevProduct += (nums[i] * i); //f[0] value*index = total
         }
 
-        int max = iteration;
-        for(int j=1; j<len; j++){
-            iteration = iteration - sum + nums[j-1]*len;
-            max = Math.max(max, iteration);
+        int ans = prevProduct;
+
+        for(int k = 1; k < n; k++) //ignoring the 0th index and starting from 1
+        {
+            int newProduct = prevProduct + (nums[k - 1] * (n - 1)) - (sum - nums[k - 1]);
+            prevProduct = newProduct;
+            ans = Math.max(newProduct, ans);
         }
 
-        return max;
+        return ans;
     }
     public static void main(String[] args) {
         int[] nums = {4,3,2,6};
