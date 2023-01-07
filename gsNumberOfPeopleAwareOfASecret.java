@@ -2,7 +2,7 @@ package challenge_6Company_30Days;
 
 public class gsNumberOfPeopleAwareOfASecret {
 
-    public int peopleAwareOfSecret(int n, int delay, int forget) {
+    public static int peopleAwareOfSecret(int n, int delay, int forget) {
         long dp[] = new long[n + 1], mod = (long)1e9 + 7, share = 0, res = 0;
         dp[1] = 1;
         for (int i = 2; i <= n; ++i)
@@ -16,6 +16,7 @@ public class gsNumberOfPeopleAwareOfASecret {
         int n=6;
         int delay=2;
         int forget=4;
+        System.out.println(peopleAwareOfSecret(n,delay,forget));
 
     }
 }
